@@ -19,10 +19,9 @@ RUN CGO_ENABLED=0 go build -o golang-example
 FROM ${DOCKER_REPOSITORY}/3rdparty/alpine:3.15 as final
 ARG TARGETOS
 ARG TARGETARCH
-COPY --from=builder /workspace/oobit_${TARGETOS}_${TARGETARCH}_* ./oobit
-COPY --from=builder /workspace/oobithelper ./oobithelper
+COPY --from=builder /workspace/golang-example /golang-example
 CMD [ "/golang-example" ]
 
 
 FROM scratch as export
-COPY --from=builder /workspace/* .
+COPY --from=builder /workspace/golang-example .
