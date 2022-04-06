@@ -3,7 +3,7 @@ FROM --platform=${BUILDPLATFORM} ${DOCKER_REPOSITORY}/3rdparty/golang:1.18.0-alp
 ARG TARGETOS
 ARG TARGETARCH
 WORKDIR /workspace
-RUN apk add --no-cache bash
+RUN apk add --no-cache bash git
 SHELL [ "/bin/bash", "-c" ]
 # Copy the Go Modules manifests
 COPY go.mod go.mod
