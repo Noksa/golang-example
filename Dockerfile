@@ -15,9 +15,7 @@ RUN go mod download
 COPY . .
 
 # Build
-RUN <<eot
-CGO_ENABLED=0 go build -o golang-example
-eot
+RUN CGO_ENABLED=0 go build -o golang-example
 
 FROM ${DOCKER_REPOSITORY}/3rdparty/alpine:3.15 as final
 ARG TARGETOS
